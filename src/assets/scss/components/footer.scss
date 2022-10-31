@@ -1,0 +1,49 @@
+.footer-container {
+    padding-bottom: 4rem;
+
+    .footer-nav {
+        ul {
+            text-align: center;
+
+            li {
+                display: inline-block;
+                margin-left: 1rem;
+    
+                a {
+                    text-decoration: none;
+                    color: rgb(142, 142, 142);
+                    font-size: 9pt;
+                }
+    
+                a:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+    
+    .copyright {
+        text-align: center;
+        color: rgb(142, 142, 142);
+
+        * {
+            display: inline-block;
+            font-size: 9pt;
+        }
+
+        select {
+            border: none;
+            color: rgb(142, 142, 142);
+            font-size: 9pt;
+            cursor: pointer;
+        }
+        
+        select:focus {
+            outline: none;
+        }
+    
+        div {
+            margin-left: 1rem;
+        }
+    }
+}
