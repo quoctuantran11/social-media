@@ -1,0 +1,28 @@
+.loading {
+    width: 8px;
+    height: 8px;
+    border: 3px solid black;
+    border-radius: 100%;
+    border-bottom-color: transparent;
+    position: absolute;
+    margin-top: .5em;
+    left: 45.5rem;
+
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotateZ(0);
+    }
+
+    100% {
+        transform: rotateZ(345deg);
+    }
+}
+
+@media screen and (max-width: 875px) {
+    .loading {
+        left: 22rem;
+    }
+}

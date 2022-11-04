@@ -1,8 +1,14 @@
-import { useState } from "react";
+import { useState, useNavigate } from "react";
 import axios from "axios";
+import { useAuth } from '../../context/authContext';
 import Footer from "../../components/Footer";
+import Helmet from "../../components/Helmet";
+import Loading from "../../components/Loading";
+import { t } from "i18next";
 
 export const LoginForm = () => {
+    const { loading, setLoading, setLoggedUser } = useAuth();
+
     const [user, setUser] = useState({
         email: "",
         password: ""
@@ -19,12 +25,17 @@ export const LoginForm = () => {
     const submitForm = (event) => {
         event.preventDefault();
         console.log(user);
+        setLoading(true);
         axios.post("http://localhost:3001/login", user)
             .then(res => {
                 console.log(res.data)
                 setLoggedUser(res.data.email)
             })
             .catch(err => console.log(err.response))
+    }
+
+    const disablingButton = () => {
+        return user.password.length >= 6 && user.email != "";
     }
 
     return (
@@ -34,13 +45,13 @@ export const LoginForm = () => {
                 <form onSubmit={submitForm} action="/">
                     <label className={user.email != "" ? "filled" : null}>
                         <span>
-                            Số điện thoại, tên người dùng hoặc email
+                            Số điện thoại hoặc email
                         </span>
                         <input
                             autoComplete='off'
-                            aria-label='Số điện thoại, tên người dùng hoặc email'
+                            aria-label='Số điện thoại hoặc email'
                             type="text"
-                            id="username"
+                            id="email"
                             name="email"
                             value={user.email}
                             onChange={handleInput} />
@@ -63,16 +74,19 @@ export const LoginForm = () => {
                             </div>
                             : null}
                     </label>
-                    <button
-                        className={user.password.length >= 6 ? null : "disabled"}
-                        type="submit"
-                        disabled={user.password.length < 6}>Đăng nhập</button>
+                    <div>
+                        {loading ? <Loading /> : null}
+                        <button
+                            className={disablingButton() ? null : "disabled"}
+                            type="submit"
+                            disabled={!disablingButton()}>Đăng nhập</button>
+                    </div>
                 </form>
                 <hr />
                 <a href="#">Quên mật khẩu?</a>
             </div>
             <div className='signup-link'>
-                Bạn chưa có tài khoản ư? <span><a href="#">Đăng ký</a></span>
+                Bạn chưa có tài khoản ư? <span><a href="/register">Đăng ký</a></span>
             </div>
         </div>
     )
@@ -80,11 +94,11 @@ export const LoginForm = () => {
 
 export function Login() {
     return (
-        <>
+        <Helmet title="Đăng nhập" constTitle="Instagram">
             <div className="login-container">
                 <LoginForm />
             </div>
             <Footer />
-        </>
+        </Helmet>
     )
 }

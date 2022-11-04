@@ -74,6 +74,20 @@
                 }
             }
 
+            p {
+                color: rgb(142, 142, 142);
+                font-size: 9pt;
+                overflow-x: hidden;
+                white-space: normal;
+
+                a {
+                    font-weight: 600;
+                    color: rgb(142, 142, 142);
+                    display: inline-block;
+                    white-space: normal;
+                }
+            }
+
             .filled {
                 * {
                     position: static;
@@ -138,7 +152,7 @@
         }
     }
 
-    .signup-link {
+    .login-link {
         width: 16rem;
         padding: 1.5rem 3rem;
         border: 1px solid rgb(210, 210, 210);

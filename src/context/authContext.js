@@ -4,7 +4,7 @@ const UserAuthContext = createContext();
 
 function UserAuthProvider({ children }) {
     const [authenticated, setAuthenticated] = useState(false);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [loggedUser, setLoggedUser] = useState(null);
 
     useEffect(() => {
@@ -37,9 +37,7 @@ function UserAuthProvider({ children }) {
             }
         };
 
-        return () => {
-            unsubcribe();
-        }
+        unsubcribe();
     }, [loggedUser])
 
     const value = {
