@@ -1,6 +1,10 @@
 .sidebar-container {
     position: fixed;
     width: inherit;
+    height: 100%;
+    border-right: 1px solid rgb(199, 199, 199);
+    padding: 2.5rem 1rem;
+    box-sizing: border-box;
 
     a:first-child {
         .logo {
@@ -45,6 +49,11 @@
                         }
                     }
 
+                    .avatar {
+                        width: 25px;
+                        height: 25px;
+                    }
+
                     .hamburger-menu,
                     .hamburger-menu::before,
                     .hamburger-menu::after {
@@ -72,7 +81,8 @@
             }
 
             &:last-child {
-                margin-top: .5rem;
+                position: fixed;
+                bottom: 1.5rem;
             }
         }
     }

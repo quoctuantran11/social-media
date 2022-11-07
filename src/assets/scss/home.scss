@@ -4,22 +4,118 @@
     display: flex;
     height: 100vh;
 
+    .avatar {
+        width: 50px;
+        height: 50px;
+        border: 1px solid rgb(226, 226, 226);
+        border-radius: 100%;
+        background-image: url("../images/clown_rage.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
     .sidebar-section {
         float: left;
-        width: 17.5%;
-        padding: 2.5rem 1rem;
-        border-right: 1px solid rgb(199, 199, 199);
+        width: 19.5%;
         position: relative;
     }
 
     .right-section {
         float: left;
-        width: 42.5%;
+        width: 35%;
+        padding: 1.5rem 6rem 2rem 2.5rem;
+        box-sizing: border-box;
+
+        .profile-link {
+            display: flex;
+            margin-top: 1.5rem;
+
+            .link-content {
+                float: right;
+                width: 50%;
+
+                &.left-area {
+                    display: flex;
+                    gap: 1rem;
+
+                    .profile-short {
+                        a {
+                            text-decoration: none;
+                            font-weight: 600;
+                            font-size: 10pt;
+                            color: black;
+                        }
+
+                        p {
+                            font-size: 11pt;
+                            color: rgb(142, 142, 142);
+                            margin-block-start: 0;
+                        }
+                    }
+                }
+
+                &.right-area {
+                    text-align: right;
+                    margin-top: 10px;
+
+                    a {
+                        text-decoration: none;
+                        color: rgb(0, 149, 246);
+                        font-weight: 600;
+                        font-size: 9pt;
+                    }
+                }
+            }
+        }
+
+        .footer-nav {
+            ul {
+                padding-inline-start: 0;
+
+                li {
+                    display: inline-block;
+                    margin-right: .2rem;
+                    color: rgb(199, 199, 199);
+
+                    a {
+                        text-decoration: none;
+                        color: rgb(199, 199, 199);
+                        font-size: 9pt;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+
+                    select {
+                        border: none;
+                        color: rgb(199, 199, 199);
+                        font-size: 9pt;
+                        cursor: pointer;
+                        appearance: none;
+                        width: 7rem;
+
+                        option {
+                            color: black;
+                        }
+                    }
+
+                    select:focus {
+                        outline: none;
+                    }
+                }
+            }
+        }
+
+        .copyright {
+            color: rgb(199, 199, 199);
+            font-size: 9pt;
+        }
     }
 
     .content-section {
         clear: both;
-        width: 42.5%;
+        width: 45.5%;
         box-sizing: border-box;
         padding: 1.5rem 2.5rem 2rem 6rem;
 
@@ -71,21 +167,13 @@
                     cursor: pointer;
 
                     .avatar-frame {
-                        width: 50px;
-                        height: 50px;
+                        width: 55px;
+                        height: 55px;
                         border-radius: 100%;
                         border: 1px solid rgb(226, 226, 226);
                         display: flex;
                         justify-content: center;
                         align-items: center;
-
-                        .avatar {
-                            width: 45px;
-                            height: 45px;
-                            border: 1px solid rgb(226, 226, 226);
-                            border-radius: 100%;
-                            background-color: black;
-                        }
                     }
 
                     .str-active {
@@ -107,7 +195,159 @@
                     border: 1px solid rgb(206, 205, 205);
                     margin-top: 1rem;
                     border-radius: 5pt;
-                    width: 100%;
+                    width: 108%;
+
+                    .author-section {
+                        display: flex;
+                        align-items: center;
+                        padding: .6rem .8rem;
+
+                        .author-link {
+                            float: left;
+                            width: 50%;
+                            display: flex;
+                            gap: .5rem;
+                            align-items: center;
+
+                            .avatar {
+                                width: 30px;
+                                height: 30px;
+                            }
+
+                            a {
+                                text-decoration: none;
+                                font-weight: 600;
+                                font-size: 10pt;
+                                color: black;
+                            }
+                        }
+
+                        .other-interact {
+                            float: left;
+                            margin-left: auto;
+
+                            .boundary {
+                                border-radius: 100%;
+                                width: 20px;
+                                height: 20px;
+                                cursor: pointer;
+
+                                .interpunct {
+                                    &::before {
+                                        content: "•";
+                                    }
+
+                                    &::after {
+                                        content: "•";
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .posted-content {
+                        img {
+                            width: 100%;
+                            height: 30rem;
+                            object-fit: cover;
+                        }
+                    }
+
+                    .post-infomation {
+                        padding: .5rem 1rem;
+
+                        svg {
+                            cursor: pointer;
+
+                            &:hover {
+                                opacity: 0.6;
+                            }
+                        }
+
+                        .reaction-section {
+
+                            .heart-btn,
+                            .comment-btn {
+                                margin-right: 1rem;
+                            }
+
+                            .bookmark-btn {
+                                float: right;
+                            }
+                        }
+
+                        .reaction-count {
+                            p {
+                                margin-block-start: .5em;
+                                margin-block-end: .5em;
+                                font-size: 10pt;
+                                
+                                b {
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+
+                        .post-title {
+                            display: flex;
+                            gap: .3rem;
+                            font-size: 10pt;
+
+                            a {
+                                text-decoration: none;
+                                color: black;
+                                font-weight: 600;
+                            }
+
+                            p {
+                                margin-block-start: 0;
+                                margin-block-end: .5em;
+                            }
+                        }
+
+                        .timestamp {
+                            p {
+                                margin-block-start: 0;
+                                margin-block-end: .5em;
+                                font-size: 8pt;
+                                color: rgb(167, 167, 167);
+
+                                span {
+                                    color: black;
+                                    margin-left: .5em;
+                                    font-size: 9pt;
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+                    }
+
+                    .comment-section {
+                        border-top: 1px solid rgb(199, 199, 199);
+                        padding: .5rem 1rem;
+                        display: flex;
+                        gap: .5rem;
+
+                        input {
+                            border: none;
+
+                            &:focus {
+                                outline: none;
+                            }
+                        }
+
+                        .submit-comment {
+                            color: rgb(0, 149, 246);
+                            opacity: 0.4;
+                            font-size: 10pt;
+                            font-weight: 500;
+                            margin-left: auto;
+
+                            &.has-comment {
+                                opacity: 1;
+                            }
+                        }
+                    }
                 }
             }
         }

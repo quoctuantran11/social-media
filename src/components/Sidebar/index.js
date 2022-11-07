@@ -47,7 +47,7 @@ export default function Sidebar() {
                 </a></li>
                 <li><a href="/">
                     <div className="side-item">
-                        
+                        <div className='avatar'></div>
                         <p>Trang cá nhân</p>
                     </div>
                 </a></li>
