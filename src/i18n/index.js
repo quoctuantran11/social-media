@@ -26,6 +26,7 @@ i18n
     fallbackLng: 'vi',
     saveMissing: true,
     debug: true,
+    returnObjects: true,
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },

@@ -1,19 +1,24 @@
-import { useState, useNavigate } from "react";
+import { useState, useRef } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from '../../context/authContext';
 import Footer from "../../components/Footer";
 import Helmet from "../../components/Helmet";
-import Loading from "../../components/Loading";
 import { t } from "i18next";
 
 export const LoginForm = () => {
-    const { loading, setLoading, setLoggedUser } = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/"
+
+    const { setAuthenticated, setLoggedUser, setLoading } = useAuth();
 
     const [user, setUser] = useState({
         email: "",
         password: ""
     });
     const [isHidden, setIsHidden] = useState(true);
+    const warningText = useRef();
 
     const handleInput = (e) => {
         setUser(prevUser => ({
@@ -24,14 +29,21 @@ export const LoginForm = () => {
 
     const submitForm = (event) => {
         event.preventDefault();
-        console.log(user);
         setLoading(true);
-        axios.post("http://localhost:3001/login", user)
-            .then(res => {
+        axios({
+            method: 'post',
+            url: 'http://localhost:3001/login',
+            data: user,
+            withCredentials: true
+        }).then(res => {
                 console.log(res.data)
-                setLoggedUser(res.data.email)
+                setLoggedUser(res.data)
+                localStorage.setItem("user", JSON.stringify(res.data))
+                setAuthenticated(true)
+                setLoading(false);
+                navigate(from, { replace: true });
             })
-            .catch(err => console.log(err.response))
+            .catch(() => warningText.current.hidden = false)
     }
 
     const disablingButton = () => {
@@ -75,7 +87,7 @@ export const LoginForm = () => {
                             : null}
                     </label>
                     <div>
-                        {loading ? <Loading /> : null}
+                        {/* {loading ? <Loading /> : null} */}
                         <button
                             className={disablingButton() ? null : "disabled"}
                             type="submit"
@@ -83,6 +95,7 @@ export const LoginForm = () => {
                     </div>
                 </form>
                 <hr />
+                <p hidden ref={warningText} className="warning-text">Rất tiếc, mật khẩu của bạn không đúng.<br /> Vui lòng kiểm tra lại mật khẩu.</p>
                 <a href="#">Quên mật khẩu?</a>
             </div>
             <div className='signup-link'>

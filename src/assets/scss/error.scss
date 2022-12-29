@@ -1,0 +1,28 @@
+.error-container {
+    height: 100vh;
+
+    .error-content {
+        text-align: center;
+        padding-top: 1rem;
+        box-sizing: border-box;
+
+        h2 {
+            font-weight: 600;
+            font-size: 17pt;
+        }
+
+        p {
+            margin-block-start: 1.5em;
+
+            a {
+                text-decoration: none;
+                color: rgb(0, 55, 107);
+            }
+        }
+    }
+}
+
+.footer-section {
+    position: absolute;
+    bottom: 0;
+}

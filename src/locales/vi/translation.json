@@ -1,5 +1,15 @@
 {
   "title": "Lịch sử mua hàng",
+  "sidebar": {
+    "home": "Trang chủ",
+    "search": "Tìm kiếm",
+    "explore": "Khám phá",
+    "messages": "Tin nhắn",
+    "notification": "Thông báo",
+    "create": "Tạo",
+    "profile": "Trang cá nhân",
+    "more": "Xem thêm"
+  },
   "footer": {
     "meta": "Meta",
     "intro": "Giới thiệu",

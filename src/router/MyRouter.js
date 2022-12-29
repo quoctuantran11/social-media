@@ -1,19 +1,26 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation, Outlet } from "react-router-dom";
 import { useAuth } from "../context/authContext";
+import PersistLogin from "../helpers/persist";
+import Explore from "../pages/Explore";
 import Home from "../pages/Home";
 import { Login } from "../pages/Login"
 import Register from "../pages/Register";
+import ErrorPage from "../pages/Error";
+import Loading from "../components/Loading";
+import Layout from "../components/Layout";
 
-function PrivateRoute({ element: Component, authenticated }) {
+function PrivateRoute({ authenticated }) {
+    const location = useLocation()
+
     return (
-        authenticated ? <Component /> :
-            <Navigate to="/login" replace={true} />
+        authenticated ? <Outlet /> :
+            <Navigate to="/login" state={{ from: location }} replace />
     )
 }
 
-function PublicRoute({ element: Component, authenticated }) {
+function PublicRoute({ authenticated }) {
     return (
-        !authenticated ? <Component /> :
+        !authenticated ? <Outlet /> :
             <Navigate to="/" replace={true} />
     )
 }
@@ -25,15 +32,22 @@ export default function MyRouter() {
     } = useAuth();
 
     return (
-        <Router>
+        loading ? <Loading /> : (
             <Routes>
-                <Route path="/" element={<Home />} />
-                {/* <Route path="/chat" element={<PrivateRoute authenticated={authenticated} element={Chat} />} /> */}
-                <Route path="/login" element={<PublicRoute authenticated={authenticated}
-                    element={Login} />} />
-                <Route path="/register" element={<PublicRoute authenticated={authenticated} element={Register} />} />
-                <Route path="*" element={<Navigate to="/" replace={true} />} />
+                <Route path="/" element={<Layout />} >
+                    <Route element={<PersistLogin />}>
+                        <Route path="/" element={<Home />} />
+                        <Route element={<PrivateRoute authenticated={authenticated} />}>
+                            <Route path="explore" element={<Explore />} />
+                        </Route>
+                    </Route>
+                    <Route element={<PublicRoute authenticated={authenticated} />}>
+                        <Route path="login" element={<Login />} />
+                        <Route path="register" element={<Register />} />
+                    </Route>
+                    <Route path="*" element={<ErrorPage />} />
+                </Route>
             </Routes>
-        </Router>
+        )
     )
 }

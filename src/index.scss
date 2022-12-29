@@ -1,6 +1,7 @@
 @import "./assets/scss/home";
 @import "./assets/scss/login";
 @import "./assets/scss/register";
+@import "./assets/scss/error";
 @import "./assets/scss/components/footer";
 @import "./assets/scss/components/loading";
 @import "./assets/scss/components/sidebar";
@@ -13,5 +14,15 @@ body {
         list-style: none;
     }
 
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Open Sans',
+    'Helvetica Neue',
+    sans-serif;
 }

@@ -1,44 +1,12 @@
 import { createContext, useState, useEffect, useContext } from "react";
+import useRefreshToken from "../hooks/useRefreshToken";
 
 const UserAuthContext = createContext();
 
 function UserAuthProvider({ children }) {
     const [authenticated, setAuthenticated] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [loggedUser, setLoggedUser] = useState(null);
-
-    useEffect(() => {
-        const unsubcribe = () => {
-            if (loggedUser) {
-                setAuthenticated(true);
-                setLoading(false);
-                // setLoggedUser(currentUser);
-                // let username = currentUser.displayName;
-
-                // const usernameRef = ref(db, `users/${username}/connections`);
-                // const lastOnlineRef = ref(db, `users/${username}/lastOnline`);
-                // const connectedRef = ref(db, '.info/connected');
-
-                // onValue(connectedRef, (snap) => {
-                //     if (snap.val() === true) {
-                //         const con = push(usernameRef);
-
-                //         onDisconnect(con).remove();
-
-                //         set(con, true);
-
-                //         onDisconnect(lastOnlineRef).set(serverTimestamp());
-                //     }
-                // })
-            }
-            else {
-                setAuthenticated(false);
-                setLoading(false);
-            }
-        };
-
-        unsubcribe();
-    }, [loggedUser])
+    const [loggedUser, setLoggedUser] = useState(JSON.parse(localStorage.getItem("user")) || null);
 
     const value = {
         authenticated,

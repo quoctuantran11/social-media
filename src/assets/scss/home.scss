@@ -1,350 +1,497 @@
 @import "../scss/login";
 
-.home-container {
+.options-container {
     display: flex;
-    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.651);
+    position: fixed;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
 
-    .avatar {
-        width: 50px;
-        height: 50px;
-        border: 1px solid rgb(226, 226, 226);
-        border-radius: 100%;
-        background-image: url("../images/clown_rage.png");
-        background-repeat: no-repeat;
-        background-size: contain;
+    .options-content {
+        width: 25rem;
+        border-radius: 10px;
+        background-color: white;
+
+        ul {
+            padding-inline-start: 0;
+            margin-block-start: 0;
+            margin-block-end: 0;
+
+            .warn {
+                font-weight: 700;
+                color: #ed4956;
+            }
+
+            .option {
+                font-size: 10pt;
+                text-align: center;
+                padding: 1rem 0;
+                border: 1px solid;
+                border-color: transparent transparent rgb(214, 214, 214) transparent;
+
+                background-color: transparent;
+                width: 100%;
+                cursor: pointer;
+            }
+
+            li:last-child {
+                .option {
+                    border-color: transparent;
+                }
+            }
+        }
     }
+}
 
-    .sidebar-section {
-        float: left;
-        width: 19.5%;
-        position: relative;
-    }
-
-    .right-section {
-        float: left;
-        width: 35%;
-        padding: 1.5rem 6rem 2rem 2.5rem;
-        box-sizing: border-box;
-
-        .profile-link {
-            display: flex;
-            margin-top: 1.5rem;
-
-            .link-content {
-                float: right;
-                width: 50%;
-
-                &.left-area {
-                    display: flex;
-                    gap: 1rem;
-
-                    .profile-short {
+.home-section {
+    .home-container {
+        display: flex;
+        max-width: 1050px;
+        margin: 0 auto;
+    
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border: 1px solid rgb(226, 226, 226);
+            border-radius: 100%;
+            background-image: url("../images/clown_rage.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    
+        .right-section {
+            float: left;
+            width: 44%;
+            padding: 1.5rem 6rem 2rem 3.5rem;
+            box-sizing: border-box;
+    
+            .profile-link {
+                display: flex;
+                margin-top: 1.5rem;
+    
+                .link-content {
+                    float: right;
+                    width: 50%;
+    
+                    &.left-area {
+                        display: flex;
+                        gap: 1rem;
+    
+                        .profile-short {
+                            a {
+                                text-decoration: none;
+                                font-weight: 600;
+                                font-size: 10pt;
+                                color: black;
+                            }
+    
+                            p {
+                                font-size: 11pt;
+                                color: rgb(142, 142, 142);
+                                margin-block-start: 0;
+                            }
+                        }
+                    }
+    
+                    &.right-area {
+                        text-align: right;
+                        margin-top: 10px;
+    
                         a {
                             text-decoration: none;
+                            color: rgb(0, 149, 246);
                             font-weight: 600;
-                            font-size: 10pt;
-                            color: black;
+                            font-size: 9pt;
                         }
-
-                        p {
-                            font-size: 11pt;
-                            color: rgb(142, 142, 142);
-                            margin-block-start: 0;
-                        }
-                    }
-                }
-
-                &.right-area {
-                    text-align: right;
-                    margin-top: 10px;
-
-                    a {
-                        text-decoration: none;
-                        color: rgb(0, 149, 246);
-                        font-weight: 600;
-                        font-size: 9pt;
                     }
                 }
             }
-        }
-
-        .footer-nav {
-            ul {
-                padding-inline-start: 0;
-
-                li {
-                    display: inline-block;
-                    margin-right: .2rem;
-                    color: rgb(199, 199, 199);
-
-                    a {
-                        text-decoration: none;
+    
+            .footer-nav {
+                ul {
+                    padding-inline-start: 0;
+    
+                    li {
+                        display: inline-block;
+                        margin-right: .2rem;
                         color: rgb(199, 199, 199);
-                        font-size: 9pt;
-
-                        &:hover {
-                            text-decoration: underline;
+    
+                        a {
+                            text-decoration: none;
+                            color: rgb(199, 199, 199);
+                            font-size: 9pt;
+    
+                            &:hover {
+                                text-decoration: underline;
+                            }
                         }
-                    }
-
-                    select {
-                        border: none;
-                        color: rgb(199, 199, 199);
-                        font-size: 9pt;
-                        cursor: pointer;
-                        appearance: none;
-                        width: 7rem;
-
-                        option {
-                            color: black;
+    
+                        select {
+                            border: none;
+                            color: rgb(199, 199, 199);
+                            font-size: 9pt;
+                            cursor: pointer;
+                            appearance: none;
+                            width: 7rem;
+    
+                            option {
+                                color: black;
+                            }
                         }
-                    }
-
-                    select:focus {
-                        outline: none;
+    
+                        select:focus {
+                            outline: none;
+                        }
                     }
                 }
             }
-        }
-
-        .copyright {
-            color: rgb(199, 199, 199);
-            font-size: 9pt;
-        }
-    }
-
-    .content-section {
-        clear: both;
-        width: 45.5%;
-        box-sizing: border-box;
-        padding: 1.5rem 2.5rem 2rem 6rem;
-
-        .stories-section {
-            .stories-container {
-                border: 1px solid rgb(206, 205, 205);
-                border-radius: 5pt;
-                padding: 1rem;
-                overflow-x: hidden;
-                width: 100%;
-                display: flex;
-                gap: 13px;
-                position: relative;
-
-                .swipe-btn {
-                    position: absolute;
-                    width: 22px;
-                    height: 22px;
-                    background-color: white;
-                    border-radius: 100%;
-                    top: 2.5rem;
-                    cursor: pointer;
-
-                    .swipe-ic {
-                        width: 6px;
-                        height: 6px;
-                        border: 2px solid;
-                        border-color: transparent transparent black black;
-                        margin-top: .4em;
-                    }
-
-                    .prev-ic {
-                        transform: rotate(45deg);
-                        margin-left: .5rem;
-                    }
-
-                    .next-ic {
-                        transform: rotate(-135deg);
-                        margin-left: .2rem;
-                    }
-                }
-
-                .next-btn {
-                    position: absolute;
-                    right: 1em;
-                }
-
-                .story {
-                    cursor: pointer;
-
-                    .avatar-frame {
-                        width: 55px;
-                        height: 55px;
-                        border-radius: 100%;
-                        border: 1px solid rgb(226, 226, 226);
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                    }
-
-                    .str-active {
-                        border: 2px solid rgb(211, 54, 54);
-                    }
-
-                    p {
-                        margin-block-start: .3em;
-                        margin-block-end: 0;
-                        font-size: 10pt;
-                    }
-                }
+    
+            .copyright {
+                color: rgb(199, 199, 199);
+                font-size: 9pt;
             }
         }
-
-        .posts-section {
-            .posts-container {
-                .post {
+    
+        .content-section {
+            clear: both;
+            width: 56%;
+            box-sizing: border-box;
+            padding: 1.5rem 1rem 2rem 6rem;
+    
+            .stories-section {
+                .stories-container {
                     border: 1px solid rgb(206, 205, 205);
-                    margin-top: 1rem;
                     border-radius: 5pt;
-                    width: 108%;
-
-                    .author-section {
-                        display: flex;
-                        align-items: center;
-                        padding: .6rem .8rem;
-
-                        .author-link {
-                            float: left;
-                            width: 50%;
+                    padding: 1rem;
+                    overflow-x: hidden;
+                    width: 100%;
+                    display: flex;
+                    gap: 13px;
+                    position: relative;
+    
+                    .swipe-btn {
+                        position: absolute;
+                        width: 22px;
+                        height: 22px;
+                        background-color: white;
+                        border-radius: 100%;
+                        top: 2.5rem;
+                        cursor: pointer;
+    
+                        .swipe-ic {
+                            width: 6px;
+                            height: 6px;
+                            border: 2px solid;
+                            border-color: transparent transparent black black;
+                            margin-top: .4em;
+                        }
+    
+                        .prev-ic {
+                            transform: rotate(45deg);
+                            margin-left: .5rem;
+                        }
+    
+                        .next-ic {
+                            transform: rotate(-135deg);
+                            margin-left: .2rem;
+                        }
+                    }
+    
+                    .next-btn {
+                        position: absolute;
+                        right: 1em;
+                    }
+    
+                    .story {
+                        cursor: pointer;
+                        text-align: center;
+    
+                        .avatar-frame {
+                            width: 52px;
+                            height: 52px;
+                            border-radius: 100%;
+                            border: 1px solid rgb(226, 226, 226);
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+    
+                        .str-active {
+                            border: 2px solid rgb(211, 54, 54);
+                        }
+    
+                        p {
+                            margin-block-start: .3em;
+                            margin-block-end: 0;
+                            font-size: 10pt;
+                        }
+                    }
+                }
+            }
+    
+            .posts-section {
+                .posts-container {
+                    .post {
+                        border: 1px solid rgb(206, 205, 205);
+                        margin-top: 1rem;
+                        border-radius: 5pt;
+                        width: 108%;
+    
+                        .author-section {
+                            display: flex;
+                            align-items: center;
+                            padding: .6rem .8rem;
+    
+                            .author-link {
+                                float: left;
+                                width: 50%;
+                                display: flex;
+                                gap: .5rem;
+                                align-items: center;
+    
+                                .avatar {
+                                    width: 30px;
+                                    height: 30px;
+                                }
+    
+                                a {
+                                    text-decoration: none;
+                                    font-weight: 600;
+                                    font-size: 10pt;
+                                    color: black;
+                                }
+                            }
+    
+                            .other-interact {
+                                float: left;
+                                margin-left: auto;
+    
+                                .boundary {
+                                    border-radius: 100%;
+                                    width: 20px;
+                                    height: 20px;
+                                    cursor: pointer;
+    
+                                    .interpunct {
+                                        &::before {
+                                            content: "•";
+                                        }
+    
+                                        &::after {
+                                            content: "•";
+                                        }
+                                    }
+                                }
+                            }
+                        }
+    
+                        .posted-content {
+                            img {
+                                width: 100%;
+                                height: 30rem;
+                                object-fit: cover;
+                            }
+    
+                            .heart {
+                                position: relative;
+                                bottom: 17rem;
+                                margin: 0 auto;
+                                width: 40px;
+                                scale: 0.7;
+                                opacity: 0;
+    
+                                &::before, &::after {
+                                    content: "";
+                                    width: 50px;
+                                    height: 70px;
+                                    position: absolute;
+                                    border-radius: 50px 50px 0 0;
+                                    background-color: white;
+                                }
+    
+                                &::before {
+                                    transform: rotate(-45deg);
+                                    left: 0;
+                                    box-shadow: 0 0 2px 5px rgba(117, 117, 117, 0.298);
+                                    border-bottom-left-radius: 10px;
+                                }
+    
+                                &::after {
+                                    transform: rotate(45deg);
+                                    left: .95rem;
+                                    box-shadow: 6px -2px 2px 5px rgba(117, 117, 117, 0.298);
+                                    border-bottom-right-radius: 10px;
+                                }
+    
+                                &.animated {
+                                    animation: pop 1s linear;
+                                }
+    
+                                @keyframes pop {
+                                    0%, 100% {
+                                        scale: 0.7;
+                                        opacity: 0;
+                                    }
+    
+                                    10% {
+                                        scale: 1.25 1.25;
+                                        opacity: 1;
+                                    }
+    
+                                    20%, 90% {
+                                        scale: 1;
+                                        opacity: 1;
+                                    }
+                                }
+                            }
+                        }
+    
+                        .post-infomation {
+                            padding: .5rem 1rem;
+    
+                            svg {
+                                cursor: pointer;
+    
+                                &:hover {
+                                    opacity: 0.6;
+                                }
+                            }
+    
+                            .reaction-section {
+    
+                                .heart-btn,
+                                .comment-btn {
+                                    margin-right: 1rem;
+                                }
+    
+                                .heart-btn {
+                                    display: inline-block;
+                                }
+    
+                                .favored {
+                                    animation: scale-up .2s linear;
+    
+                                    svg {
+                                        path {
+                                            fill: #ed4956;
+                                        }
+    
+                                        &:hover {
+                                            opacity: 1;
+                                        }
+                                    }
+                                }
+    
+                                .saved {
+                                    opacity: 1;
+                                }
+    
+                                @keyframes scale-up {
+    
+                                    0%,
+                                    100% {
+                                        transform: scale(100%);
+                                    }
+    
+                                    50% {
+                                        transform: scale(120%);
+                                    }
+                                }
+    
+                                .bookmark-btn {
+                                    float: right;
+                                }
+                            }
+    
+                            .reaction-count {
+                                p {
+                                    margin-block-start: .5em;
+                                    margin-block-end: .5em;
+                                    font-size: 10pt;
+    
+                                    b {
+                                        cursor: pointer;
+                                    }
+                                }
+                            }
+    
+                            .post-title {
+                                display: flex;
+                                gap: .3rem;
+                                font-size: 10pt;
+    
+                                a {
+                                    text-decoration: none;
+                                    color: black;
+                                    font-weight: 600;
+                                }
+    
+                                p {
+                                    margin-block-start: 0;
+                                    margin-block-end: .5em;
+                                }
+                            }
+    
+                            .timestamp {
+                                p {
+                                    margin-block-start: 0;
+                                    margin-block-end: .5em;
+                                    font-size: 8pt;
+                                    color: rgb(167, 167, 167);
+    
+                                    span {
+                                        color: black;
+                                        margin-left: .5em;
+                                        font-size: 9pt;
+                                        cursor: pointer;
+                                    }
+                                }
+                            }
+                        }
+    
+                        .comment-section {
+                            border-top: 1px solid rgb(199, 199, 199);
+                            padding: .5rem 1rem;
                             display: flex;
                             gap: .5rem;
-                            align-items: center;
-
-                            .avatar {
-                                width: 30px;
-                                height: 30px;
-                            }
-
-                            a {
-                                text-decoration: none;
-                                font-weight: 600;
-                                font-size: 10pt;
-                                color: black;
-                            }
-                        }
-
-                        .other-interact {
-                            float: left;
-                            margin-left: auto;
-
-                            .boundary {
-                                border-radius: 100%;
-                                width: 20px;
-                                height: 20px;
-                                cursor: pointer;
-
-                                .interpunct {
-                                    &::before {
-                                        content: "•";
-                                    }
-
-                                    &::after {
-                                        content: "•";
-                                    }
+    
+                            input {
+                                border: none;
+                                width: 100%;
+    
+                                &:focus {
+                                    outline: none;
                                 }
                             }
-                        }
-                    }
-
-                    .posted-content {
-                        img {
-                            width: 100%;
-                            height: 30rem;
-                            object-fit: cover;
-                        }
-                    }
-
-                    .post-infomation {
-                        padding: .5rem 1rem;
-
-                        svg {
-                            cursor: pointer;
-
-                            &:hover {
-                                opacity: 0.6;
-                            }
-                        }
-
-                        .reaction-section {
-
-                            .heart-btn,
-                            .comment-btn {
-                                margin-right: 1rem;
-                            }
-
-                            .bookmark-btn {
-                                float: right;
-                            }
-                        }
-
-                        .reaction-count {
-                            p {
-                                margin-block-start: .5em;
-                                margin-block-end: .5em;
+    
+                            .submit-comment {
+                                color: rgb(0, 149, 246);
+                                opacity: 0.4;
                                 font-size: 10pt;
-                                
-                                b {
+                                font-weight: 500;
+                                margin-left: auto;
+    
+                                -webkit-touch-callout: none;
+                                /* iOS Safari */
+                                -webkit-user-select: none;
+                                /* Safari */
+                                -khtml-user-select: none;
+                                /* Konqueror HTML */
+                                -moz-user-select: none;
+                                /* Old versions of Firefox */
+                                -ms-user-select: none;
+                                /* Internet Explorer/Edge */
+                                user-select: none;
+                                /* Non-prefixed version, currently
+                                      supported by Chrome, Edge, Opera and Firefox */
+    
+                                &.has-comment {
+                                    opacity: 1;
                                     cursor: pointer;
                                 }
-                            }
-                        }
-
-                        .post-title {
-                            display: flex;
-                            gap: .3rem;
-                            font-size: 10pt;
-
-                            a {
-                                text-decoration: none;
-                                color: black;
-                                font-weight: 600;
-                            }
-
-                            p {
-                                margin-block-start: 0;
-                                margin-block-end: .5em;
-                            }
-                        }
-
-                        .timestamp {
-                            p {
-                                margin-block-start: 0;
-                                margin-block-end: .5em;
-                                font-size: 8pt;
-                                color: rgb(167, 167, 167);
-
-                                span {
-                                    color: black;
-                                    margin-left: .5em;
-                                    font-size: 9pt;
-                                    cursor: pointer;
-                                }
-                            }
-                        }
-                    }
-
-                    .comment-section {
-                        border-top: 1px solid rgb(199, 199, 199);
-                        padding: .5rem 1rem;
-                        display: flex;
-                        gap: .5rem;
-
-                        input {
-                            border: none;
-
-                            &:focus {
-                                outline: none;
-                            }
-                        }
-
-                        .submit-comment {
-                            color: rgb(0, 149, 246);
-                            opacity: 0.4;
-                            font-size: 10pt;
-                            font-weight: 500;
-                            margin-left: auto;
-
-                            &.has-comment {
-                                opacity: 1;
                             }
                         }
                     }
@@ -356,7 +503,6 @@
 
 .notauth-container {
     display: flex;
-    height: 100vh;
 
     padding: 2rem;
 
